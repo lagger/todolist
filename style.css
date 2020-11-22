@@ -18,6 +18,12 @@ html {
   height: 100%;
 }
 
+.page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
 .box {
   display: flex;
   flex-direction: column;
@@ -43,13 +49,74 @@ html {
   margin-top: 50px;
 }
 
-.box .content {
-  width: 100%;
-  flex: 0 1 100%;
+.navigationBar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.taskBox {
+#menuButton {
+  width: 200px;
+  background-color: black;
+  color: rgb(215, 215, 215);
+  height: 100px;
+  font-size: 3rem;
+}
+
+#menuButton:hover {
+  color: white;
+}
+
+.navbutton {
+  color: white;
+  height: 80px;
+  width: 100%;
+  background-color: black;
+  font-weight: 400;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.navigationBar ul {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  flex: 1 1 100%;
+  transition-duration: 1s;
+  pointer-events: none;
+  list-style-type: none;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.navigationBar ul li {
+  background-color: black;
+}
+
+.navigationBar ul li a {
+  text-decoration: none;
+  color: rgb(215, 215, 215);
+  width: 100%;
+  background-color: black;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.navigationBar ul li a:hover {
+  color: white;
+}
+
+.box .content {
+  width: 100%;
+  flex: 1 1 100%;
+}
+
+.taskBox,
+.doneTasks {
   width: 30%;
+  background-color: white;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -58,25 +125,30 @@ html {
 #addTask {
   display: flex;
   justify-content: center;
+  align-items: center;
   border: 3px solid black;
   box-shadow: 0px 5px 10px, 0px 10px 30px;
 }
 
-#taskList {
+#taskList,
+#doneTaskList {
   background-color: white;
   box-shadow: 0px 5px 10px, 0px 10px 30px;
 }
 
-.listItem {
-  display: flex;
-  justify-content: flex-end;
-  border-left: 3px solid black;
-  border-right: 3px solid black;
-  border-bottom: 3px solid black;
+.doneTasks li {
+  border-right: 3px solid #049f23;
+  border-bottom: 3px solid #049f23;
+  border-left: 3px solid #049f23;
+}
+
+.doneTasks li:first-child {
+  border-top: 3px solid #049f23;
 }
 
 input[type="text"] {
   width: 80%;
+  height: 50px;
   padding: 0px 20px;
   font-weight: 600;
   text-transform: uppercase;
@@ -87,17 +159,18 @@ input[type="text"] {
 
 .button {
   color: white;
-  background-color: #005ef5;
+  min-height: 50px;
   width: 20%;
-  height: 50px;
   font-weight: 900;
   font-size: 1.5rem;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 input[type="button"]#addButton {
   background-color: #005ef5;
+  transition-duration: 0.5s;
 }
 
 input[type="button"]#addButton:hover {
@@ -107,6 +180,7 @@ input[type="button"]#addButton:hover {
 
 input[type="button"].done {
   background-color: #049f23;
+  transition-duration: 0.5s;
 }
 
 input[type="button"].done:hover {
@@ -114,28 +188,45 @@ input[type="button"].done:hover {
   transition-duration: 0.5s;
 }
 
-ul {
+.taskBox ul,
+.doneTasks ul {
   display: flex;
   flex-direction: column;
   list-style-type: none;
 }
-li {
+
+.taskBox li {
+  display: flex;
+  justify-content: flex-end;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+}
+
+.taskBox li p,
+.doneTasks li p {
   display: flex;
   align-items: center;
   font-weight: 700;
   font-size: 16px;
-  padding: 0px 20px;
+  padding: 10px 20px;
   width: 80%;
-  height: 50px;
+  min-height: 50px;
+  word-break: break-all;
 }
 
-ul:last-child {
-  margin-bottom: 70px;
+.taskBox ul:last-child,
+.doneTasks ul:last-child {
+  margin-bottom: 100px;
 }
-.box .footer {
+
+.footer {
   display: flex;
-  flex: 0 1 75px;
   width: 100%;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  flex: 0 1;
   color: white;
   background-color: black;
   justify-content: flex-end;
@@ -177,13 +268,13 @@ ul:last-child {
   }
   .button {
     height: 100px;
-    font-size: 3rem;
+    font-size: 2rem;
   }
   input[type="text"] {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
-  li {
+  .taskbox li {
     height: 100px;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }

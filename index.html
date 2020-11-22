@@ -9,6 +9,17 @@
         <script src="script.js"></script>
     </head>
     <body onload="load();">
+        <div class="page">
+
+      
+        <div class="navigationBar">
+            <input type="button" id="menuButton" class="button" value="MENU">
+            <ul id="navigationBarItems">
+                <li><a href="index.html" class="navlink">TO-DO LIST</a></li>
+                <li><a href="donetasks.html" class="navlink">DONE TASKS</a></li>
+            </ul>
+
+        </div>
         <div class="box">
             <div class="header">
                 <h1>TO-DO LIST</h1>
@@ -16,19 +27,20 @@
             <div class="content">
                 <div class="taskBox">
                     <div id="addTask">
-                        <input type="text" id="task" placeholder="DODAJ ZADANIE" name="task" autofocus>
+                        <input type="text" id="taskInput" placeholder="DODAJ ZADANIE" name="task" autofocus>
                         <input type="button" id="addButton" class="button" value="ADD">   
                     </div>
                     <ul id="taskList">
 
                     </ul>
                 </div>
-
             </div>
             <div class="footer">
                 <h1><span>MADE BY</span> TOMASZ TÓRZ</h1>
             </div>
-        </div>
-    </body>
 
+        </div>
+
+    </div>
+    </body>
 </html>
