@@ -3,6 +3,11 @@
   padding: 0px;
   box-sizing: border-box;
   font-family: "Oswald", sans-serif;
+  --background-primary: rgb(215, 215, 215);
+  --add-button-normal: #005ef5;
+  --add-button-hover: #0046b8;
+  --done-button-normal: #049f23;
+  --done-button-hover: #04771b;
 }
 
 body {
@@ -22,6 +27,85 @@ html {
   display: flex;
   width: 100%;
   height: 100%;
+}
+
+.navbar {
+  width: 5rem;
+  height: fit-content;
+  transition: width 200ms ease-in-out;
+}
+
+.navbar-link {
+  width: 15rem;
+}
+
+.navbar:hover {
+  width: 15rem;
+}
+
+.navbar:hover .navbar-item-text {
+  display: block;
+  opacity: 1;
+}
+
+.navbar-items {
+  display: flex;
+  background-color: black;
+  flex-direction: column;
+}
+
+.navbar-item,
+.navbar-item .navbar-link {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item:hover {
+  background-color: white;
+}
+
+.navbar-item:hover .navbar-item-text {
+  color: black;
+}
+
+.navbar-item:hover svg,
+.navbar-item:hover .navbar-link svg {
+  fill: black;
+}
+
+.navbar-item svg,
+.navbar-item .navbar-link svg {
+  min-width: 2rem;
+  margin: 1.5rem 1.5rem;
+  fill: var(--background-primary);
+}
+
+.navbar-link {
+  text-decoration: none;
+}
+
+.navbar-item-text {
+  display: none;
+
+  width: 10rem;
+  color: var(--background-primary);
+}
+
+#navbar-menu-text {
+  font-size: 2rem;
+  pointer-events: none;
+}
+
+#navbar-menu:hover {
+  background-color: black;
+}
+
+#navbar-menu:hover svg {
+  fill: var(--background-primary);
+}
+
+#navbar-menu:hover #navbar-menu-text {
+  color: var(--background-primary);
 }
 
 .box {
@@ -47,65 +131,6 @@ html {
   text-shadow: 0px 5px 5px black;
   color: black;
   margin-top: 50px;
-}
-
-.navigationBar {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-#menuButton {
-  width: 200px;
-  background-color: black;
-  color: rgb(215, 215, 215);
-  height: 100px;
-  font-size: 3rem;
-}
-
-#menuButton:hover {
-  color: white;
-}
-
-.navbutton {
-  color: white;
-  height: 80px;
-  width: 100%;
-  background-color: black;
-  font-weight: 400;
-  font-size: 1.5rem;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.navigationBar ul {
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  flex: 1 1 100%;
-  transition-duration: 1s;
-  pointer-events: none;
-  list-style-type: none;
-  font-size: 2rem;
-  text-align: center;
-}
-
-.navigationBar ul li {
-  background-color: black;
-}
-
-.navigationBar ul li a {
-  text-decoration: none;
-  color: rgb(215, 215, 215);
-  width: 100%;
-  background-color: black;
-  font-weight: 400;
-  font-size: 1.5rem;
-}
-
-.navigationBar ul li a:hover {
-  color: white;
 }
 
 .box .content {
@@ -169,22 +194,22 @@ input[type="text"] {
 }
 
 input[type="button"]#addButton {
-  background-color: #005ef5;
+  background-color: var(--add-button-normal);
   transition-duration: 0.5s;
 }
 
 input[type="button"]#addButton:hover {
-  background-color: #0046b8;
+  background-color: var(--add-button-hover);
   transition-duration: 0.5s;
 }
 
 input[type="button"].done {
-  background-color: #049f23;
+  background-color: var(--done-button-normal);
   transition-duration: 0.5s;
 }
 
 input[type="button"].done:hover {
-  background-color: #04771b;
+  background-color: var(--done-button-hover);
   transition-duration: 0.5s;
 }
 
@@ -227,7 +252,7 @@ input[type="button"].done:hover {
   bottom: 0px;
   left: 0px;
   flex: 0 1;
-  color: white;
+  color: var(--background-primary);
   background-color: black;
   justify-content: flex-end;
   align-items: center;
@@ -253,14 +278,15 @@ input[type="button"].done:hover {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #d7d7d7;
-  box-shadow: inset 0 0 6px rgba(215, 215, 215, 0.5);
+  box-shadow: inset 0 0 6px rgba(--background-primary, 0.5);
 }
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #d7d7d7;
 }
 
 @media screen and (max-width: 1200px) {
-  .taskBox {
+  .taskBox,
+  .doneTasks {
     width: 80%;
   }
   .header h1 {
@@ -273,8 +299,22 @@ input[type="button"].done:hover {
   input[type="text"] {
     font-size: 1.5rem;
   }
-  .taskbox li {
+  .taskList li,
+  .doneTaskList li {
     height: 100px;
     font-size: 1.5rem;
   }
+  /*
+  .page {
+    flex-direction: column;
+  }
+  .navbar {
+    width: 100%;
+  }
+
+  .navbar-items {
+    width: 100%;
+    align-items: center;
+  }
+  */
 }

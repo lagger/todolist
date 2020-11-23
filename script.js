@@ -21,11 +21,11 @@ function addTask(){
 
         currentTasks.push(taskInputValue.toUpperCase());
         sessionStorage.setItem("currentTasks", JSON.stringify(currentTasks));
-        taskInput.placeholder = "DODAJ ZADANIE"
+        taskInput.placeholder = "ADD TASK"
         taskInput.value = "";
     }
     else{
-        taskInput.placeholder = "WPISZ ZADANIE!"
+        taskInput.placeholder = "TASK CAN NOT BE EMPTY!"
     }
     taskInput.focus();
     console.log(currentTasks);
@@ -51,22 +51,9 @@ function createButton(buttonValue, buttonClass, buttonEventFunction){
     return doneButton;
 }
 
-function showMenu(){
-    var navigationBarItems = document.getElementById("navigationBarItems");
-    if (!clicked){
-        navigationBarItems.setAttribute("style", "opacity: 1; pointer-events: all");
-        
-    }
-    else{
-        navigationBarItems.setAttribute("style", "opacity: 0; pointer-events: none");
-    }
-    clicked = !clicked;
-}
-
 
 function load(){
     document.getElementById("addButton").addEventListener("click",addTask);
-    document.getElementById("menuButton").addEventListener("click", showMenu);
     document.getElementById("taskInput").addEventListener("keyup", function(event){
         if(event.key=="Enter"){
             addTask();
@@ -92,7 +79,6 @@ function load(){
 }
 
 function loadDoneTasks(){
-    document.getElementById("menuButton").addEventListener("click", showMenu);
     let doneTasks = JSON.parse(sessionStorage.getItem("doneTasks")) || [];
     for (var i = 0; i < doneTasks.length; i++){
         var doneTaskList = document.getElementById("doneTaskList");
